@@ -1,12 +1,36 @@
 //  Ref 활용하여, 블로그에서 글 읽을때 어떤 제목의 글인지 상단 내비게이션 헤더에 제목 표기
 
 import '@/App.css'
+import { useEffect, useRef } from 'react'
 
-function Header() {
-  return <div style={{ position: 'sticky', top: 0, height: 60, backgroundColor: 'white' }}></div>
+function Header({ title }) {
+  return (
+    <div style={{ position: 'sticky', top: 0, height: 60, backgroundColor: 'white' }}>
+      <div id='header-title' style={{ color: 'black', opacity: 0 }}>
+        {title}
+      </div>
+    </div>
+  )
 }
 function Title({ title }) {
-  return <h3>{title}</h3>
+  const titleRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.intersectionRatio) {
+        document.getElementById('header-title').classList.add('active')
+      } else {
+        document.getElementById('header-title').classList.remove('active')
+      }
+    })
+    observer.observe(titleRef.current)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return <h3 ref={titleRef}>{title}</h3>
 }
 function Content({ content }) {
   return <div>{content}</div>
@@ -29,7 +53,7 @@ function Practice_13() {
 
   return (
     <>
-      <Header />
+      <Header title={post.title} />
       <Post title={post.title} content={post.content} />
     </>
   )
