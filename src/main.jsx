@@ -6,9 +6,11 @@ import './index.css'
 // import Practice_11 from '@/Practice_11'
 // import Practice_12 from '@/Practice_12'
 import Practice_13 from '@/Practice_13'
+import Example from '@/Example'
+import Practice_16 from '@/Practice_16'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Practice_13 />
+    <Practice_16 />
   </StrictMode>,
 )
