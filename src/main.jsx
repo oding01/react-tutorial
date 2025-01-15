@@ -8,9 +8,10 @@ import './index.css'
 import Practice_13 from '@/Practice_13'
 import Example from '@/Example'
 import Practice_16 from '@/Practice_16'
+import Practice_18 from '@/Practice_18'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Practice_16 />
+    <Practice_18 />
   </StrictMode>,
 )

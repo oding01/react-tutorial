@@ -24,7 +24,7 @@ function reducer(previousState, action) {
 
 function Practice_16() {
   const [count, dispatch] = useReducer(reducer, 0)
-
+  console.log('rerendered')
   return (
     <>
       <div>{count}</div>
